@@ -9,8 +9,6 @@
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
-
-
 </head>
 <body class="bg-black text-white font-sans">
   <section class="text-center p-10">
@@ -42,21 +40,24 @@
       </select>
 
       <input type="email" id="email" placeholder="Enter your email" class="w-full p-2 rounded mb-4 text-black" />
-      <button onclick="submitEmail()" class="bg-blue-500 hover:bg-blue-600 p-2 rounded w-full">🎟️ Join the Waitlist</button>
-    </div>
-      <img src="img/myimage.jpg" alt="AI Movie Poster" class="mt-6 rounded-lg shadow-xl mx-auto w-full max-w-xl" />
+      <button id="submitBtn" onclick="submitEmail()" class="bg-blue-500 hover:bg-blue-600 p-2 rounded w-full">🎟️ Join the Waitlist</button>
 
+      <p id="formMessage" class="mt-4 text-sm"></p>
+    </div>
+
+    <img src="img/myimage.jpg" alt="AI Movie Poster" onerror="this.src='https://via.placeholder.com/600x400?text=AIflix+Poster';" class="mt-6 rounded-lg shadow-xl mx-auto w-full max-w-xl" />
   </section>
 
   <section class="p-10 text-center">
     <h2 class="text-2xl font-semibold mb-4">How AIflix Works</h2>
-    <p>1. Pick your genre and mood<br>2. AI writes your script without you seeing it<br>3. You watch your preference  come to life</p>
+    <p>1. Pick your genre and mood<br>2. AI writes your script without you seeing it<br>3. You watch your preference come to life</p>
   </section>
 
   <footer class="text-center p-6 text-gray-400 text-sm">
     &copy; 2025 AIflix. All rights reserved.
   </footer>
-<!-- Your Firebase scripts -->
+
+  <!-- Your Firebase script -->
   <script src="scripts/firebase.js"></script>
 </body>
 </html>
