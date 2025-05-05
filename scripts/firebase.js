@@ -1,6 +1,6 @@
 // scripts/firebase.js
 
-// Firebase config (replace with your own if needed)
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyAvuCWhQ1nt0E_Tl2sS0PM8zsj0kodAi3A",
   authDomain: "landing-35a20.firebaseapp.com",
@@ -13,21 +13,20 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
-// Initialize Firestore
 const db = firebase.firestore();
 
-// Attach function to global window so HTML can access it
+// Attach function to global window
 window.submitEmail = async function () {
   const emailInput = document.getElementById("email");
   const genre = document.getElementById("genre").value;
   const mood = document.getElementById("mood").value;
+  const idea = document.getElementById("idea").value.trim();
   const formMessage = document.getElementById("formMessage");
   const submitBtn = document.getElementById("submitBtn");
 
   const email = emailInput.value.trim();
 
-  if (!email || !genre || !mood) {
+  if (!email || !genre || !mood || !idea) {
     formMessage.textContent = "❌ Please fill in all fields.";
     formMessage.className = "text-red-500 mt-4";
     return;
@@ -41,6 +40,7 @@ window.submitEmail = async function () {
       email,
       genre,
       mood,
+      idea,
       timestamp: new Date()
     });
 
@@ -49,8 +49,9 @@ window.submitEmail = async function () {
     emailInput.value = "";
     document.getElementById("genre").value = "";
     document.getElementById("mood").value = "";
+    document.getElementById("idea").value = "";
   } catch (error) {
-    console.error("Error saving email:", error);
+    console.error("Error saving entry:", error);
     formMessage.textContent = "⚠️ Something went wrong. Please try again.";
     formMessage.className = "text-yellow-500 mt-4";
   } finally {
